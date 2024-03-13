@@ -1,12 +1,12 @@
 <div class="author">
-	<h1 class="author__heading">Hi, I am ajnur</h1>
-	<p class="author__body">Student & Creator & Builder</p>
+	<h1 class="author__heading">Hi, I am ajnur.</h1>
+	<p class="author__body">Student & Builder & Creator</p>
 </div>
 
 <img
 	src="/img/hero-image.webp"
 	alt="person looking out through window"
-	class="hero-imagine"
+	class="hero-image"
 	width="981"
 	height="528"
 />
@@ -14,14 +14,18 @@
 <section class="articles">
 	<h2 class="articles__heading">Latest Posts</h2>
 
+	<!--! ALl Blogs looping and showing with the correct data-->
 	<ul class="article-ul">
+		<% data.forEach(post => { %>
 		<li>
-			<a href="#">
-				<span>Post Title</span>
-				<span class="article-list__date">Post Title</span>
+			<!--Linking the posts with the ids and show them (id) -->
+			<a href="/post/<%= post._id %>">
+				<span><%= post.title %></span>
+				<span class="article-list__date"
+					><%= post.createdAt.toDateString() %></span
+				>
 			</a>
 		</li>
+		<% }) %>
 	</ul>
-
-	<a href="#" class="pegination">&lt; View Older Posts</a>
 </section>

@@ -3,7 +3,7 @@
 :root {
   --black: #1c1c1c;
   --gray: #7E7E7E;
-  --gray-light: #E4E4E4;
+  --gray-light: blue;
   --red: #b30000;
   --font-size-base: 1rem;
   --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
@@ -17,7 +17,7 @@ body {
   color: var(--black);
   font-size: var(--font-size-base);
   background-color: #FAF5EE;
-  background-image: url("/img/img-noise-361x370.png");
+  /*background-image: url("/img/img-noise-361x370.png");*/
   margin: 0;
 }
 
@@ -299,7 +299,7 @@ img {
 /* SeachBar */
 .searchBar {
   visibility: hidden;
-  transform: translateY(-100px);
+  transform: translateY(-100px); 
   background-color: var(--black);
   padding: 4px 0;
   position: absolute;
