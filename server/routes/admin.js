@@ -9,7 +9,6 @@ const jwt = require('jsonwebtoken');
 const adminLayout = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET;
 
-
 /**
  *  Middleware function (to get us in only if we have logged in)
  * Check Login 
@@ -29,9 +28,6 @@ const authMiddleware = (req, res, next) => {
         res.status(401).json({ message: 'Unauthorized' });
     }
 }
-
-
-
 
 /**
  * GET / 
@@ -75,8 +71,6 @@ router.post('/admin', async (req, res) => {
         res.cookie('token', token, { httpOnly: true });
 
         res.redirect('/dashboard');
-
-
 
     } catch (error) {
         console.log(error);
@@ -150,7 +144,6 @@ router.post('/add-post', authMiddleware, async (req, res) => {
 
 });
 
-
 /**
  * get / 
  * admin - Create New Post 
@@ -172,7 +165,6 @@ router.get('/edit-post/:id', authMiddleware, async (req, res) => {
 
 });
 
-
 /**
  * Delete / 
  * admin - Delete Post
@@ -186,7 +178,6 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
     }
 
 });
-
 
 /**
  * Put / 
@@ -207,7 +198,6 @@ router.put('/edit-post/:id', authMiddleware, async (req, res) => {
     }
 
 });
-
 
 /**
  * Post / 
@@ -233,8 +223,6 @@ router.post('/register', async (req, res) => {
         console.log(error);
     }
 });
-
-
 
 /**
  * Get / 

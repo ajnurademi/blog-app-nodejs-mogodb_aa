@@ -9,8 +9,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-
-
 const connectDB = require('./server/config/db');
 
 const app = express();
@@ -36,9 +34,6 @@ app.use(session({
     })
 }))
 
-
-
-
 // Adding sources (css, js, ...)
 app.use(express.static('public'));
 
@@ -51,8 +46,6 @@ app.set('view engine', 'ejs');
 app.use('/', require('./server/routes/main'));
 app.use('/', require('./server/routes/admin'));
 
-
-
 app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`);
+    console.log(`listening on Port ${PORT}`);
 });
