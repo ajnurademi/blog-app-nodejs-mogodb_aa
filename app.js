@@ -3,6 +3,13 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const methodOverride = require('method-override')
+// help us to grap the cookies from the browser to synchronised the data from the loged user (store the sesssion)
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+
 
 const connectDB = require('./server/config/db');
 
@@ -16,6 +23,18 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 // Pass data in json 
 app.use(express.json());
+app.use(methodOverride('_method'));
+
+app.use(cookieParser());
+// for the cookies
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URL
+    })
+}))
 
 
 

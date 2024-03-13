@@ -3,7 +3,7 @@
 :root {
   --black: #1c1c1c;
   --gray: #7E7E7E;
-  --gray-light: blue;
+  --gray-light: rgb(193, 193, 193);
   --red: #b30000;
   --font-size-base: 1rem;
   --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
