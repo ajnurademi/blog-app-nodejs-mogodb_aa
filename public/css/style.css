@@ -16,10 +16,11 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--black);
   font-size: var(--font-size-base);
-  background-color: #FAF5EE;
-  /*background-image: url("/img/img-noise-361x370.png");*/
+  background: linear-gradient(to right, #2E3192 , #1BFFFF);
   margin: 0;
 }
+
+
 
 a { color: var(--black); }
 h1 { font-size: var(--font-size-xl); }

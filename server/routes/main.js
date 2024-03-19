@@ -76,16 +76,7 @@ router.post('/search', async (req, res) => {
     }
 });
 
-
-
-router.get('/about', (req, res) => {
-    res.render('about');
-});
-
 module.exports = router;
-
-
-
 
 
 // Inserting Data (Blog Posts)

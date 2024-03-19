@@ -47,5 +47,5 @@ app.use('/', require('./server/routes/main'));
 app.use('/', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
-    console.log(`listening on Port ${PORT}`);
+    console.log(`listening on Port http://localhost:${PORT}`);
 });
