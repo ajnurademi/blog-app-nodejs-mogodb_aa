@@ -2,25 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
 
-/**
- * GET / 
- * Home
-*/
-router.get('', async (req, res) => {
-    // making data to pass them in .ejs
-    const locals = {
-        title: "NodeJs Blog",
-        description: "Simple Blog created"
-    }
-
-    // find all Post from Mongodb
-    try {
-        const data = await Post.find();
-        res.render('index', { locals, data });
-    } catch (error) {
-        console.log(error);
-    }
-});
 
 /**
  * GET / 
@@ -77,21 +58,3 @@ router.post('/search', async (req, res) => {
 });
 
 module.exports = router;
-
-
-// Inserting Data (Blog Posts)
-// function insertPostData() {
-//     Post.insertMany([
-//         {
-//             title: "Building APIs with Node.js",
-//             body: "Learn how to use Node.js to build RESTful APIs using frameworks like Express.js"
-//         },
-//         {
-//             title: "Deployment of Node.js applications",
-//             body: "Understand the different ways to deploy your Node.js applications, including on-premises, cloud, and container environments..."
-//         },
-//     ])
-// }
-
-// If you want to insert the data above
-// insertPostData();

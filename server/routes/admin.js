@@ -29,23 +29,56 @@ const authMiddleware = (req, res, next) => {
     }
 }
 
+
+
 /**
  * GET / 
  * Admin - Login Page
 */
-router.get('/admin', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const locals = {
             title: "Admin",
             description: "Simple Blog created"
         }
 
-        // !changed the name index --> login
+        // ! changed the name index --> login
         res.render('admin/login', { locals, layout: adminLayout });
     } catch (error) {
         console.log(error);
     }
 });
+
+
+/**
+ * GET / 
+ * Home
+*/
+
+router.get('/home', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId); 
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Benutzernamen aus dem Benutzerobjekt extrahieren
+        const username = user.username;
+
+        const locals = {
+            title: "NodeJs Blog",
+            description: "Simple Blog created",
+        };
+
+        // Alle Posts aus der Datenbank abrufen
+        const data = await Post.find();
+        res.render('index', { locals, data, username });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 
 /**
  * Post / 
@@ -236,4 +269,3 @@ router.get('/logout', (req, res) => {
 })
 
 module.exports = router;
-module.exports = authMiddleware;
