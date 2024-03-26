@@ -7,7 +7,7 @@ Dies ist eine einfache Blog-App, die mit Node.js, Express und MongoDB entwickelt
 1. **Git-Repository klonen:**
    
    ```markdown
-   git clone <[repository-URL](https://github.com/ajnurademi/blog-app-nodejs-mogodb_aa)>
+   git clone https://github.com/ajnurademi/blog-app-nodejs-mogodb_aa
    ```
 
 2. **Terminal öffnen:**
