@@ -49,7 +49,6 @@ router.post('/search', async (req, res) => {
             ]
         });
 
-
         res.render("search", { data, locals });
 
     } catch (error) {

@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const adminLayout = '../views/layouts/admin';
+// Geheimnisschlüssel ( signiereren des Token)
 const jwtSecret = process.env.JWT_SECRET;
 
 /**
@@ -29,8 +30,6 @@ const authMiddleware = (req, res, next) => {
     }
 }
 
-
-
 /**
  * GET / 
  * Admin - Login Page
@@ -41,7 +40,6 @@ router.get('', async (req, res) => {
             title: "Admin",
             description: "Simple Blog created"
         }
-
         // ! changed the name index --> login
         res.render('admin/login', { locals, layout: adminLayout });
     } catch (error) {
@@ -54,10 +52,9 @@ router.get('', async (req, res) => {
  * GET / 
  * Home
 */
-
 router.get('/home', authMiddleware, async (req, res) => {
     try {
-        const user = await User.findById(req.userId); 
+        const user = await User.findById(req.userId);
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -148,7 +145,6 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 
 });
 
-
 /**
  * Post / 
  * admin - Create New Post 
@@ -156,25 +152,20 @@ router.get('/add-post', authMiddleware, async (req, res) => {
 router.post('/add-post', authMiddleware, async (req, res) => {
 
     try {
-
         try {
             const newPost = new Post({
                 title: req.body.title,
                 body: req.body.body
             });
-
             await Post.create(newPost)
             res.redirect('/dashboard');
         } catch (error) {
             console.log(error);
         }
 
-
-
     } catch (error) {
         console.log(error);
     }
-
 });
 
 /**
@@ -195,7 +186,6 @@ router.get('/edit-post/:id', authMiddleware, async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 });
 
 /**
@@ -209,7 +199,6 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 });
 
 /**
@@ -229,7 +218,6 @@ router.put('/edit-post/:id', authMiddleware, async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 });
 
 /**
@@ -250,8 +238,6 @@ router.post('/register', async (req, res) => {
             }
             res.status(500).json({ message: 'Interal Server Error' });
         }
-
-
     } catch (error) {
         console.log(error);
     }
@@ -265,7 +251,6 @@ router.get('/logout', (req, res) => {
     res.clearCookie('token');
     //res.json({ message: 'logout succesful.' });
     res.redirect('/');
-
 })
 
 module.exports = router;
